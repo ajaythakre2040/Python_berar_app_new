@@ -1,0 +1,285 @@
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from auth_system.permissions.token_valid import IsTokenValid
+from lead.serializers.enquiry_serializer import EnquirySerializer
+from django.db import IntegrityError
+from rest_framework import status
+from lead.models.enquiry import Enquiry
+from django.db.models import Q
+from auth_system.utils.pagination import CustomPagination
+from rest_framework.exceptions import NotFound
+from constants import PercentageStatus
+from constants import EnquiryStatus
+from lead.models.lead_logs import LeadLog  
+from api_endpoints import CUSTOMER_GET_BY_ACCOUNT_URL
+from lead.utils.mis_helpers import call_mis_api
+from datetime import date
+from django.utils import timezone
+
+class EnquiryListCreateAPIView(APIView):
+    permission_classes = [IsAuthenticated, IsTokenValid]
+
+    def get(self, request):
+        search_query = request.query_params.get("search", None)
+        count_only = request.query_params.get("count_only") == "true"
+
+        if search_query:
+            enquiries = Enquiry.objects.filter(
+                Q(name__icontains=search_query) |
+                Q(mobile_number__icontains=search_query),
+                deleted_at__isnull=True
+            )
+        else:
+            enquiries = Enquiry.objects.filter(deleted_at__isnull=True, is_status=EnquiryStatus.ACTIVE)
+
+        total_count = enquiries.count()
+
+        if count_only:
+            return Response({
+                "success": True,
+                "message": "Total enquiry count retrieved.",
+                "total_counts": total_count
+            }, status=status.HTTP_200_OK)
+
+        enquiries = enquiries.order_by("-id")
+
+        paginator = CustomPagination()
+        page_data = paginator.paginate_queryset(enquiries, request)
+        serializer = EnquirySerializer(page_data, many=True)
+
+        return paginator.get_custom_paginated_response(
+            data=serializer.data,
+            extra_fields={
+                "success": True,
+                "message": "Enquiries retrieved successfully (paginated).",
+                "total_count": total_count
+            }
+        )
+
+
+    def post(self, request):
+        enquiry_id = request.data.get("enquiry_id")
+
+        e = Enquiry.objects.last()
+        # print(e.updated_at)                     
+        # print(timezone.localtime(e.updated_at)) 
+
+        if enquiry_id:
+            try:
+                enquiry = Enquiry.objects.get(id=enquiry_id)
+            except Enquiry.DoesNotExist:
+                enquiry = None
+
+            if enquiry:
+                serializer = EnquirySerializer(enquiry, data=request.data, partial=True)
+                if serializer.is_valid():
+                    enquiry = serializer.save(updated_by=request.user.id, updated_at=timezone.localtime())  # assuming you track updated_by
+                    LeadLog.objects.create(
+                        enquiry=enquiry,
+                        status="Enquiry Updated",
+                        created_by=request.user.id,
+                    )
+                    return Response(
+                        {
+                            "Success": True,
+                            "Message": "Enquiry updated successfully.",
+                            "data": EnquirySerializer(enquiry).data,
+                        },
+                        status=status.HTTP_200_OK,
+                    )
+                else:
+                    return Response(
+                        {
+                            "Success": False,
+                            "Message": "Invalid data provided for update.",
+                            "Errors": serializer.errors,
+                        },
+                        status=status.HTTP_400_BAD_REQUEST,
+                    )
+            
+
+        # Create new enquiry
+        serializer = EnquirySerializer(data=request.data)
+        if serializer.is_valid():
+            try:
+                enquiry = serializer.save(
+                    created_by=request.user.id,
+                    is_steps=PercentageStatus.ENQUIRY_BASIC,
+                    is_status=EnquiryStatus.DRAFT,
+                )
+                LeadLog.objects.create(
+                    enquiry=enquiry,
+                    status="Basic Enquiry Form",
+                    created_by=request.user.id,
+                )
+                return Response(
+                    {
+                        "Success": True,
+                        "Message": "Enquiry created successfully.",
+                        "data": EnquirySerializer(enquiry).data,
+                    },
+                    status=status.HTTP_201_CREATED,
+                )
+            except IntegrityError as e:
+                return Response(
+                    {
+                        "Success": False,
+                        "Message": "Integrity error occurred while creating enquiry.",
+                        "Error": str(e),
+                    },
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+        else:
+            return Response(
+                {
+                    "Success": False,
+                    "Message": "Invalid data provided for creation.",
+                    "Errors": serializer.errors,
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+class EnquiryDetailView(APIView):
+    permission_classes = [IsAuthenticated, IsTokenValid]
+    def get_object(self, pk):
+        try:
+            return Enquiry.objects.select_related(
+                'enquiry_verification'
+            ).prefetch_related(
+                'enquiry_addresses',
+                'enquiry_loan_details',
+                'enquiry_images',
+                'enquiry_selfies'
+            ).get(pk=pk, deleted_at__isnull=True)
+        except Enquiry.DoesNotExist:
+            raise NotFound(detail=f"Enquiry with id {pk} not found.")
+
+    def get(self, request, pk):
+        enquiry = self.get_object(pk)
+        serializer = EnquirySerializer(enquiry)
+        return Response(
+            {
+                "success": True,
+                "message": "Enquiry retrieved successfully.",
+                "data": serializer.data,
+            },
+            status=status.HTTP_200_OK,
+        )
+    
+class EnquiryExistingDataAPIView(APIView):
+    permission_classes = [IsAuthenticated, IsTokenValid]
+
+    def post(self, request):
+        mobile = request.data.get("mobile_number", "").strip()
+        lan = request.data.get("lan_number", "").strip()
+
+        if not mobile and not lan:
+            return Response(
+                {
+                    "success": False,
+                    "message": "At least mobile_number or lan_number is required.",
+                    "data": None,
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        params = {}
+        if lan:
+            params["loanAccount"] = lan
+        if mobile:
+            params["mobileNumber"] = mobile
+
+        return call_mis_api(
+            request, CUSTOMER_GET_BY_ACCOUNT_URL, params=params, timeout=30
+        )
+
+class EnquiryDraftAPIView(APIView):
+    permission_classes = [IsAuthenticated, IsTokenValid]
+
+    def get(self, request):
+        search_query = request.query_params.get("search", None)
+        count_only = request.query_params.get("count_only") == "true"
+
+        if search_query:
+            enquiries = Enquiry.objects.filter(
+                Q(name__icontains=search_query) |
+                Q(mobile_number__icontains=search_query),
+                deleted_at__isnull=True
+            )
+        else:
+            enquiries = Enquiry.objects.filter(deleted_at__isnull=True, is_status=EnquiryStatus.DRAFT)
+
+        total_count = enquiries.count()
+
+        if count_only:
+            return Response({
+                "success": True,
+                "message": "Total draft enquiry count retrieved.",
+                "total_counts": total_count
+            }, status=status.HTTP_200_OK)
+
+        enquiries = enquiries.order_by("id")
+
+        paginator = CustomPagination()
+        page_data = paginator.paginate_queryset(enquiries, request)
+        serializer = EnquirySerializer(page_data, many=True)
+
+        return paginator.get_custom_paginated_response(
+            data=serializer.data,
+            extra_fields={
+                "success": True,
+                "message": "Draft Enquiries retrieved successfully (paginated).",
+                "total_count": total_count
+            }
+        )
+
+
+
+class EnquiryTodayDraftAPIView(APIView):
+    permission_classes = [IsAuthenticated, IsTokenValid]
+
+    def get(self, request, *args, **kwargs):
+        search_query = request.query_params.get("search", None)
+        count_only = request.query_params.get("count_only") == "true"
+
+        today = date.today()
+
+        if search_query:
+            enquiries = Enquiry.objects.filter(
+                Q(name__icontains=search_query) |
+                Q(mobile_number__icontains=search_query),
+                deleted_at__isnull=True,
+                is_status=EnquiryStatus.DRAFT,
+                created_at__date=today 
+            )
+        else:
+            enquiries = Enquiry.objects.filter(
+                deleted_at__isnull=True,
+                is_status=EnquiryStatus.DRAFT,
+                created_at__date=today  
+            )
+
+        total_count = enquiries.count()
+
+        if count_only:
+            return Response({
+                "success": True,
+                "message": "Today's draft enquiry count retrieved.",
+                "total_counts": total_count
+            }, status=status.HTTP_200_OK)
+
+        enquiries = enquiries.order_by("id")
+
+        paginator = CustomPagination()
+        page_data = paginator.paginate_queryset(enquiries, request)
+        serializer = EnquirySerializer(page_data, many=True)
+
+        return paginator.get_custom_paginated_response(
+            data=serializer.data,
+            extra_fields={
+                "success": True,
+                "message": "Today's Draft Enquiries retrieved successfully (paginated).",
+                "total_count": total_count
+            }
+        )

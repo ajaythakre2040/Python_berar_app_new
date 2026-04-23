@@ -1,0 +1,6 @@
+● backend.service - Lead Django Backend Gunicorn Service
+     Loaded: loaded (]8;;file://UAT-APP/etc/systemd/system/backend.service/etc/systemd/system/backend.service]8;;; [0;1;32menabled[0m; preset: [0;1;38;5;185mdisabled[0m)
+     Active: activating (auto-restart) (Result: exit-code) since Mon 2025-09-01 12:19:26 IST; 58ms ago
+    Process: 235227 ExecStart=/lead/backend/venv/bin/python3 -m gunicorn --workers 3 --bind 127.0.0.1:8000 berar.wsgi:application [0;1;31m(code=exited, status=203/EXEC)[0m
+   Main PID: 235227 (code=exited, status=203/EXEC)
+        CPU: 2ms
