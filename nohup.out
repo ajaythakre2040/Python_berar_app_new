@@ -1,13 +1,13 @@
-[0;1;31m×[0m backend.service - Lead Django Backend Gunicorn Service
-     Loaded: loaded (]8;;file://UAT-APP/etc/systemd/system/backend.service/etc/systemd/system/backend.service]8;;; [0;1;32menabled[0m; preset: [0;1;38;5;185mdisabled[0m)
-     Active: [0;1;31mfailed[0m (Result: exit-code) since Mon 2025-09-01 11:46:01 IST; 3s ago
-   Duration: 3ms
-    Process: 225110 ExecStart=/lead/backend/venv/bin/gunicorn berar.wsgi:application --bind 127.0.0.1:8000 [0;1;31m(code=exited, status=217/USER)[0m
-   Main PID: 225110 (code=exited, status=217/USER)
-        CPU: 1ms
+Traceback (most recent call last):
+  File "/lead/backend/manage.py", line 11, in main
+    from django.core.management import execute_from_command_line
+ModuleNotFoundError: No module named 'django'
 
-Sep 01 11:46:01 UAT-APP systemd[1]: backend.service: Scheduled restart job, restart counter is at 5.
-Sep 01 11:46:01 UAT-APP systemd[1]: Stopped Lead Django Backend Gunicorn Service.
-Sep 01 11:46:01 UAT-APP systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mbackend.service: Start request repeated too quickly.[0m
-Sep 01 11:46:01 UAT-APP systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mbackend.service: Failed with result 'exit-code'.[0m
-Sep 01 11:46:01 UAT-APP systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start Lead Django Backend Gunicorn Service.[0m
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/lead/backend/manage.py", line 22, in <module>
+    main()
+  File "/lead/backend/manage.py", line 13, in main
+    raise ImportError(
+ImportError: Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable? Did you forget to activate a virtual environment?

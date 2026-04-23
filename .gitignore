@@ -1,13 +1,94 @@
-# Base URL for MIS Data APIs
-BASE_MIS_DATA_API_URL = "http://10.0.100.84:8000/api/loan"
-# BASE_MIS_DATA_API_URL = "http://localhost:8000/api/loan"
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-# Customer-related MIS Data API Endpoints
-CUSTOMER_GET_ALL_URL = f"{BASE_MIS_DATA_API_URL}/customers/get-all/"
-CUSTOMER_COUNT_URL = f"{BASE_MIS_DATA_API_URL}/customers/count/"
-CUSTOMER_SEARCH_URL = f"{BASE_MIS_DATA_API_URL}/customers/search/"
-CUSTOMER_GET_BY_ACCOUNT_URL = f"{BASE_MIS_DATA_API_URL}/customers/getBy-account-number/"
-CUSTOMER_SEARCH_BY_ADDRESS_URL = f"{BASE_MIS_DATA_API_URL}/customers/search-by-address/"
+# C extensions
+*.so
 
-# Location-related API Endpoints
-EXTERNAL_LOCATION_API_BASE_URL = "https://countriesnow.space/api/v0.1"
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+test-results/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# VS Code settings
+.vscode/
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# dotenv
+.env
+.env.*
+.venv
+
+# Local dev tools
+.idea/
+*.swp
+*.swo
+
+# Log files
+*.logcms.zip 
+cms.zip 
+cms.zip
