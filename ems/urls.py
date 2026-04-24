@@ -44,6 +44,12 @@ from ems.views.role_view import RoleDetailView, RoleListCreateView
 from ems.views.state_master import StateDetailAPIView, StateListCreateAPIView
 from ems.views.subdealer_view import SubDealerDetailView, SubDealerListCreateView
 
+from ems.views.emp_upload import UploadCSVView
+from ems.views.branch_upload import BranchCSVUploadView
+from ems.views.dealer_upload import DealerCSVUploadView
+from ems.views.department_upload import DepartmentCSVUploadView
+from ems.views.designation_upload import DesignationCSVUploadView
+from ems.views.subdealer_upload import SubDealerCSVUploadView
 
 urlpatterns = [
     path("branch/", TblBranchListCreateView.as_view(), name="branch-list-create"),
@@ -153,7 +159,24 @@ urlpatterns = [
     ),
     path("states/", StateListCreateAPIView.as_view(), name="state-list-create"),
     path("states/<int:pk>/", StateDetailAPIView.as_view(), name="state-detail"),
+
+    path("upload/Emp/", UploadCSVView.as_view(), name="emp-upload-csv"),
+    path("upload/branch/", BranchCSVUploadView.as_view(), name="branch-upload-csv"),
+    path(
+        "upload/department/",
+        DepartmentCSVUploadView.as_view(),
+        name="department-csv-upload",
+    ),
+    path(
+        "upload/designation/",
+        DesignationCSVUploadView.as_view(),
+        name="designation-csv-upload",
+    ),
+    path("upload/dealer/", DealerCSVUploadView.as_view(), name="dealer-csv-upload"),
+    path(
+        "upload/subdealer/",
+        SubDealerCSVUploadView.as_view(),
+        name="subdealer-csv-upload",
+    ),
 ]
 
-
-urlpatterns 

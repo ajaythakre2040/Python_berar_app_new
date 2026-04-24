@@ -303,3 +303,5 @@ class TicketStatus(models.IntegerChoices):
     TICKET_CLOSED = 2, "CLOSED"
     TICKET_ACTIVE = 3, "ACTIVE"
     TICKET_REJECT = 4, "REJECT"
+
+PRIORITY_MAPPING = {"High": 1, "Medium": 2, "Low": 3}

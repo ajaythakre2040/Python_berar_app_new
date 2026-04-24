@@ -1,0 +1,20 @@
+Row Number,upload_status_reason,department_name,department_email,hide_from_client
+2,Department 'admi Resources' already exists in the system.,admi Resources,hr@ems.com,False
+3,Department 'IT Department' already exists in the system.,IT Department,it@ems.com,False
+4,Department 'HR Department' already exists in the system.,HR Department,hr_dept@ems.com,False
+5,Department 'Finance' already exists in the system.,Finance,finance@ems.com,False
+6,Department 'Marketing' already exists in the system.,Marketing,marketing@ems.com,False
+7,Department 'IT Infrastructure' already exists in the system.,IT Infrastructure,it_infra@ems.com,False
+8,Department 'Sales & Marketing' already exists in the system.,Sales & Marketing,sales@ems.com,False
+9,Department 'Finance & Accounts' already exists in the system.,Finance & Accounts,accounts@ems.com,True
+10,Department 'Logistics & Supply' already exists in the system.,Logistics & Supply,logistics@ems.com,False
+11,Department 'Quality Control' already exists in the system.,Quality Control,qc@ems.com,False
+12,Department 'Customer Support' already exists in the system.,Customer Support,support@ems.com,False
+13,Department 'Legal Department' already exists in the system.,Legal Department,legal@ems.com,True
+14,Department 'R&D Department' already exists in the system.,R&D Department,rd@ems.com,False
+15,Department 'Admin & Facilities' already exists in the system.,Admin & Facilities,admin@ems.com,False
+16,Department 'Secured MSME' already exists in the system.,Secured MSME,admin@example.com,FALSE
+17,Department 'Two Wheeler Sales' already exists in the system.,Two Wheeler Sales,department@example.com,FALSE
+18,Department 'Branch Operations' already exists in the system.,Branch Operations,branch@ems.com,FALSE
+19,Department 'Credit' already exists in the system.,Credit,credit@ems.com,FALSE
+20,Department 'Operations' already exists in the system.,Operations,operation@ems.com,FALSE

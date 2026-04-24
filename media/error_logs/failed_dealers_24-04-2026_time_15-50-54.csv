@@ -1,0 +1,8 @@
+Row Number,Failure Reason,code,name,branch,state,district,city,pin_code,address_1,mobile_number,email,latitude,longitude
+2,Branch 'Nagpur' does not exist in the database.,D001,Apex Motors,Nagpur,Maharashtra,Nagpur,Nagpur,440001,Civil Lines,9876543210,apex@deal.com,21.14,79.08
+3,Branch 'Baramati' does not exist in the database.,D002,Pawar Auto,Baramati,Maharashtra,Pune,Baramati,413102,Main Market,9876543211,pawar@deal.com,18.15,74.58
+4,Branch 'Akola' does not exist in the database.,D003,Vidarbha Cars,Akola,Maharashtra,Akola,Akola,444001,NH-6 Road,9876543212,vidarbha@deal.com,20.70,77.00
+5,Branch 'Bhopal' does not exist in the database.,D004,Capital Wheels,Bhopal,MP,Bhopal,Bhopal,462001,Arera Colony,9876543213,capital@deal.com,23.25,77.41
+6,Branch 'Indore Branch' does not exist in the database.,D005,Royal Motors,Indore Branch,MP,Indore,Indore,452001,Vijay Nagar,9876543214,royal@deal.com,22.71,75.85
+7,Branch 'Amravati' does not exist in the database.,D006,City Car Gallery,Amravati,Maharashtra,Amravati,Amravati,444601,Rajapeth,9876543215,city@deal.com,20.93,77.75
+8,Branch 'Ratnagiri' does not exist in the database.,D007,Coastal Dealers,Ratnagiri,Maharashtra,Ratnagiri,Ratnagiri,415612,Konkan Road,9876543216,coastal@deal.com,16.99,73.31
