@@ -1,0 +1,20 @@
+department_name,department_email,hide_from_client
+admi Resources,hr@ems.com,FALSE
+IT Department,it@ems.com,FALSE
+HR Department,hr_dept@ems.com,FALSE
+Finance,finance@ems.com,FALSE
+Marketing,marketing@ems.com,FALSE
+IT Infrastructure,it_infra@ems.com,FALSE
+Sales & Marketing,sales@ems.com,FALSE
+Finance & Accounts,accounts@ems.com,TRUE
+Logistics & Supply,logistics@ems.com,FALSE
+Quality Control,qc@ems.com,FALSE
+Customer Support,support@ems.com,FALSE
+Legal Department,legal@ems.com,TRUE
+R&D Department,rd@ems.com,FALSE
+Admin & Facilities,admin@ems.com,FALSE
+Secured MSME,admin@example.com,FALSE
+Two Wheeler Sales,department@example.com,FALSE
+Branch Operations,branch@ems.com,FALSE
+Credit,credit@ems.com,FALSE
+Operations,operation@ems.com,FALSE

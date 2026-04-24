@@ -1,0 +1,36 @@
+designation_name,parent_designation_name,designation_code,designation_priority,department_name
+Branch Sales Manager,Manager,BSM_NEW,2,Marketing
+Relationship Manager,Manager,RM_NEW,1,Marketing
+Area Sales Manager,Manager,ASM_NEW,2,admi Resources
+Risk Executive,Senior Executive,RISK_EXE,1,Operations
+Senior RCU Executive,Senior Executive,RCU_EXE,1,Operations
+Branch Manager,Zonal Manager,BM_NEW,1,Operations
+Sales Manager,Area Sales Manager,SM_NEW,2,Marketing
+Area Credit Manager,Regional Credit Manager,ACM_NEW,1,Finance
+Credit Manager,Area Credit Manager,CM_NEW,1,Finance
+Manager,Zonal Manager,MGR_GEN,2,Operations
+DISBMT OFFICER,Executive,DISB_OFF,3,Finance
+Telecaller,Executive,TELE_EXE,3,Marketing
+Operations Officer,Executive,OPS_OFF,2,Operations
+Assistant Vice President,Vice President,AVP_NEW,1,Operations
+Regional Sales Manager,National Business Head,RSM_NEW,1,Marketing
+Assistant Credit Manager,Regional Credit Manager,ASST_CM,2,Finance
+Senior Credit Officer,Credit Manager,SR_CO,2,Finance
+Assistant Manager Legal,Manager,AM_LEGAL,2,Legal Department
+Vice President-Credit,National Business Head,VP_CRED,1,Finance
+Field Investigation Executive,Executive,FI_EXE,3,Operations
+Cluster Sales Manager,Regional Sales Manager,CSM_NEW,1,Marketing
+Sales Executive,Sales Manager,SE_NEW,3,Marketing
+Circle Manager,Zonal Business Head,CIR_MGR,1,Marketing
+Sales Executive - Refinance,Team Leader,SE_REF,3,Marketing
+Unit Manager,Branch Manager,UNIT_MGR,2,Operations
+State Head,National Business Head,ST_HEAD,1,Operations
+Team Leader,Manager,TL_NEW,2,Operations
+SALES-TEAM LEADER,Sales Manager,STL_NEW,2,Marketing
+Zonal Business Head,National Business Head,ZBH_NEW,1,Marketing
+Business Development Officer,Sales Manager,BDO_NEW,2,Marketing
+Executive - Refinance,Executive,EXE_REF,3,Marketing
+National Business Head,CEO,NBH_NEW,1,Marketing
+State Head - CG2,State Head,ST_CG2,1,Operations
+State Head - CG1,State Head,ST_CG1,1,Operations
+OffROll Sales Executive,Team Leader,OFF_SE,3,Marketing

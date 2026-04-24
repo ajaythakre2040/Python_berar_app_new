@@ -1,0 +1,11 @@
+code,name,dealer_name,branch_name,mobile_number,email,address_1,district,state,city,pin_code
+S001,Apex Sub-1,Apex Motors,Adilabad,9001002001,sub1@apex.com,Main Road Market,Adilabad,Telangana,Adilabad,504001
+S002,Pawar Sub-1,Pawar Auto,Ahmednagar,9001002002,sub1@pawar.com,Station Area,Ahmednagar,Maharashtra,Ahmednagar,414001
+S003,Vidarbha Sub-1,Vidarbha Cars,Akola,9001002003,sub1@vidarbha.com,New Bypass Road,Akola,Maharashtra,Akola,444001
+S004,Capital Sub-1,Capital Wheels,Alibag,9001002004,sub1@capital.com,Beach Side,Raigad,Maharashtra,Alibag,402201
+S005,Royal Sub-1,Royal Motors,Amravati,9001002005,sub1@royal.com,City Square Mall,Amravati,Maharashtra,Amravati,444601
+S006,City Sub-1,City Car Gallery,Aurangabad,9001002007,sub1@city.com,Sector 1 Cidco,Aurangabad,Maharashtra,Aurangabad,431001
+S007,Coastal Sub-1,Coastal Dealers,Baramati,9001002008,sub1@coastal.com,MIDC Road,Pune,Maharashtra,Baramati,413102
+S008,Apex Sub-2,Apex Motors,Bhopal,9001002009,sub2@apex.com,Arera Colony,Bhopal,Madhya Pradesh,Bhopal,462001
+S009,Pawar Sub-2,Pawar Auto,Bilaspur,9001002010,sub2@pawar.com,Link Road No 3,Bilaspur,Chhattisgarh,Bilaspur,495001
+S010,Vidarbha Sub-2,Vidarbha Cars,Chandrapur,9001002011,sub2@vidarbha.com,Civil Lines,Chandrapur,Maharashtra,Chandrapur,442401

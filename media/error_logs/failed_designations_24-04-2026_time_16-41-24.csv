@@ -1,0 +1,36 @@
+Row Number,upload_status_reason,designation_name,parent_designation_name,designation_code,designation_priority,department_name
+2,Department '5' not found in system.,Branch Sales Manager,Manager,BSM_NEW,2,5
+3,Department '5' not found in system.,Relationship Manager,Manager,RM_NEW,1,5
+4,Department '1' not found in system.,Area Sales Manager,Manager,ASM_NEW,2,1
+5,Department '19' not found in system.,Risk Executive,Senior Executive,RISK_EXE,1,19
+6,Department '19' not found in system.,Senior RCU Executive,Senior Executive,RCU_EXE,1,19
+7,Department '19' not found in system.,Branch Manager,Zonal Manager,BM_NEW,1,19
+8,Department '5' not found in system.,Sales Manager,Area Sales Manager,SM_NEW,2,5
+9,Department '4' not found in system.,Area Credit Manager,Regional Credit Manager,ACM_NEW,1,4
+10,Department '4' not found in system.,Credit Manager,Area Credit Manager,CM_NEW,1,4
+11,Department '19' not found in system.,Manager,Zonal Manager,MGR_GEN,2,19
+12,Department '4' not found in system.,DISBMT OFFICER,Executive,DISB_OFF,3,4
+13,Department '5' not found in system.,Telecaller,Executive,TELE_EXE,3,5
+14,Department '19' not found in system.,Operations Officer,Executive,OPS_OFF,2,19
+15,Department '19' not found in system.,Assistant Vice President,Vice President,AVP_NEW,1,19
+16,Department '5' not found in system.,Regional Sales Manager,National Business Head,RSM_NEW,1,5
+17,Department '4' not found in system.,Assistant Credit Manager,Regional Credit Manager,ASST_CM,2,4
+18,Department '4' not found in system.,Senior Credit Officer,Credit Manager,SR_CO,2,4
+19,Department '12' not found in system.,Assistant Manager Legal,Manager,AM_LEGAL,2,12
+20,Department '4' not found in system.,Vice President-Credit,National Business Head,VP_CRED,1,4   
+21,Department '19' not found in system.,Field Investigation Executive,Executive,FI_EXE,3,19
+22,Department '5' not found in system.,Cluster Sales Manager,Regional Sales Manager,CSM_NEW,1,5
+23,Department '5' not found in system.,Sales Executive,Sales Manager,SE_NEW,3,5
+24,Department '5' not found in system.,Circle Manager,Zonal Business Head,CIR_MGR,1,5
+25,Department '5' not found in system.,Sales Executive - Refinance,Team Leader,SE_REF,3,5
+26,Department '19' not found in system.,Unit Manager,Branch Manager,UNIT_MGR,2,19
+27,Department '19' not found in system.,State Head,National Business Head,ST_HEAD,1,19
+28,Department '19' not found in system.,Team Leader,Manager,TL_NEW,2,19
+29,Department '5' not found in system.,SALES-TEAM LEADER,Sales Manager,STL_NEW,2,5
+30,Department '5' not found in system.,Zonal Business Head,National Business Head,ZBH_NEW,1,5
+31,Department '5' not found in system.,Business Development Officer,Sales Manager,BDO_NEW,2,5
+32,Department '5' not found in system.,Executive - Refinance,Executive,EXE_REF,3,5
+33,Department '5' not found in system.,National Business Head,CEO,NBH_NEW,1,5
+34,Department '19' not found in system.,State Head - CG2,State Head,ST_CG2,1,19
+35,Department '19' not found in system.,State Head - CG1,State Head,ST_CG1,1,19
+36,Department '5' not found in system.,OffROll Sales Executive,Team Leader,OFF_SE,3,5
